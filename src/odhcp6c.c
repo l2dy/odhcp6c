@@ -626,7 +626,8 @@ int main(_unused int argc, char* const argv[])
 				notify_state_change("updated", 0, false);
 				dhcpv6_set_state(DHCPV6_BOUND);
 			} else {
-				dhcpv6_set_state(DHCPV6_REBIND);
+				// HACK: attempt REQUEST transaction if router is not responding
+				dhcpv6_set_state(DHCPV6_REQUEST);
 			}
 			break;
 
